@@ -1,0 +1,17 @@
+name: tutorial
+
+# python_env: python_env.yaml   
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      solver: {type: string, default: "lbfgs"}
+      max_iter: {type: int, default: 1000}
+    command: "python train.py {solver} {max_iter}"
+
+  validate:
+    parameters:
+      model_uri: uri
+      test_json: path
+    command: "python validate.py {model_uri} {test_json}"
